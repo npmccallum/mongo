@@ -33,7 +33,7 @@ def configure( env , fileLists , options ):
 
 def configureSystem( env , fileLists , options ):
 
-    env.Append( LIBS=[ "pcrecpp" ] )
+    env.Append( LIBS=[ "pcrecpp", "pcre" ] )
 
 
 if __name__ == "__main__":
