@@ -702,7 +702,7 @@ if nix:
 
     #make scons colorgcc friendly
     env['ENV']['HOME'] = os.environ['HOME']
-    env['ENV']['TERM'] = os.environ['TERM']
+    #env['ENV']['TERM'] = os.environ['TERM']
 
     if linux and has_option( "sharedclient" ):
         env.Append( LINKFLAGS=" -Wl,--as-needed -Wl,-zdefs " )
