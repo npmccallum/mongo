@@ -16,11 +16,11 @@ def assignErrorCodes():
             didAnything = False
             fixed = ""
             for line in open( x ):
-                s = line.partition( root + "(" )
-                if s[1] == "" or line.startswith( "#define " + root):
+                s = line.split( root + "(" , 1 )
+                if not root + "(" in line or line.startswith( "#define " + root):
                     fixed += line
                     continue
-                fixed += s[0] + root + "( " + str( cur ) + " , " + s[2]
+                fixed += s[0] + root + "( " + str( cur ) + " , " + s[1]
                 cur = cur + 1
                 didAnything = True
             if didAnything:
@@ -104,13 +104,13 @@ def checkErrorCodes():
     return len( errors ) == 0 
 
 def getBestMessage( err , start ):
-    err = err.partition( start )[2]
+    err = (err.split( start , 1 ) + [""])[1]
     if not err:
         return ""
-    err = err.partition( "\"" )[2]
+    err = (err.split( "\"" , 1 ) + [""])[1]
     if not err:
         return ""
-    err = err.rpartition( "\"" )[0]
+    err = err.split( "\"" , 1 )[0]
     if not err:
         return ""
     return err

@@ -7,7 +7,7 @@ from optparse import OptionParser
 
 cwd = os.getcwd();
 if cwd.find("buildscripts" ) > 0 :
-    cwd = cwd.partition( "buildscripts" )[0]
+    cwd = cwd.split( "buildscripts" , 1 )[0]
 
 print( "cwd [" + cwd + "]" )
 
@@ -38,7 +38,7 @@ def killprocs( signal="" ):
         if not shouldKill( x ):
             continue
         
-        pid = x.partition( " " )[0]
+        pid = x.split( " " , 1 )[0]
         print( "killing: " + x )
         utils.execsys( "/bin/kill " + signal + " " +  pid )
         killed = killed + 1
