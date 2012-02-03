@@ -22,6 +22,7 @@
 #define MONGO_PCH_H
 
 #if defined(MONGO_EXPOSE_MACROS)
+# undef  JS_C_STRINGS_ARE_UTF8
 # define JS_C_STRINGS_ARE_UTF8
 # undef  SUPPORT_UCP
 # define SUPPORT_UCP
